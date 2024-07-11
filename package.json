@@ -1,5 +1,5 @@
 {
-	"name": "moxa-iologik-e220series-http",
+	"name": "moxa-iologik-e2200series-http",
 	"version": "0.1.0",
 	"main": "src/main.js",
 	"scripts": {

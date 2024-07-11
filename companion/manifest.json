@@ -1,7 +1,7 @@
 {
-	"id": "moxa-iologik-e220series-http",
-	"name": "moxa-iologik-e220series-http",
-	"shortname": "Moxa ioLogik E2200",
+	"id": "moxa-iologik-e2200series-http",
+	"name": "moxa-iologik-e2200series-http",
+	"shortname": "Moxa ioLogik e2200 series",
 	"description": "Companion module for Moxa ioLogik e2200 series DIO units",
 	"version": "0.1.0",
 	"license": "MIT",

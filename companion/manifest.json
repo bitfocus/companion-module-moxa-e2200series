@@ -1,9 +1,9 @@
 {
-	"id": "moxa-iologik-e2200series-http",
-	"name": "moxa-iologik-e2200series-http",
+	"id": "moxa-e2210http",
+	"name": "moxa-e2210http",
 	"shortname": "Moxa ioLogik e2200 series",
 	"description": "Companion module for Moxa ioLogik e2200 series DIO units",
-	"version": "0.1.0",
+	"version": "0.0.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/phillipivan/companion-module-moxa-iologike2200http.git",
 	"bugs": "https://github.com/phillipivan/companion-module-moxa-iologike2200http/issues",
@@ -21,6 +21,6 @@
 	},
 	"legacyIds": [],
 	"manufacturer": "Moxa",
-	"products": ["ioLogik e2210"],
-	"keywords": ["DIO"]
+	"products": ["ioLogik e2210", "ioLogik e2212"],
+	"keywords": ["DIO", "DI", "DO", "GPIO", "GPI", "GPO"]
 }

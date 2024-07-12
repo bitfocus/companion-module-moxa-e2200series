@@ -3,27 +3,40 @@
 Control the Moxa ioLogik e2210 and e2212 
 
 ### Actions
--**Set DI Count Start**
--**Set DI Filter**
--**Set DI Mode**
--**Set DI Trigger**
--**Set DO Mode**
--**Set DO Pulse**
--**Set DO Status**
+
+- **Get / Set DI Count Start**
+- **Get / Set DI Filter**
+- **Get / Set DI Mode**
+- **Get / Set DI Trigger**
+- **Get / Set DO Mode**
+- **Get / Set DO Pulse**
+- **Get / Set DO Pulse Width**
+- **Get / Set DO Status**
 
 All actions can be performed against multiple DIs/DOs at once.
 
+### Feedbacks
+
+- **DI Count Start**
+- **DI Mode**
+- **DI Trigger**
+- **DO Mode**
+- **DO Pulse**
+- **DO Status**
+
 ### Variables
 
--**DI # Counter**
-
--**Date**
--**Description**
--**Firmware Version**
--**IP Address**
--**Location**
--**MAC Address**
--**Model**
--**Serial Number**
--**Time**
+- **DI Counter**
+- **DI Filter**
+- **DO Pulse Width High**
+- **DO Pulse Width Low**
+- **Date**
+- **Description**
+- **Firmware Version**
+- **IP Address**
+- **Location**
+- **MAC Address**
+- **Model**
+- **Serial Number**
+- **Time**
 

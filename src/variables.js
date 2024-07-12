@@ -1,4 +1,4 @@
-import { choices } from './consts.js'
+//import { choices } from './consts.js'
 
 export async function UpdateVariableDefinitions (self) {
 	let variableList = []
@@ -15,7 +15,12 @@ export async function UpdateVariableDefinitions (self) {
 	)
 
 	for (let i = 0; i < self.moxa.inputs.length; i++) {
-		variableList.push({ variableId: `count_input_${i}`, name: `Counter: Input ${i}` })	
+		variableList.push({ variableId: `count_input_${i}`, name: `DI: Counter ${i}` })	
+		variableList.push({ variableId: `filter_input_${i}`, name: `DI: filter ${i}` })	
+	}
+	for (let i = 0; i < self.moxa.outputs.length; i++) {
+		variableList.push({ variableId: `lowWidth_output_${i}`, name: `DO: Pulse Low Width ${i}` })	
+		variableList.push({ variableId: `highWidth_output_${i}`, name: `DO: Pulse High Width ${i}` })	
 	}
 
 	self.setVariableDefinitions(variableList)

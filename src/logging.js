@@ -3,11 +3,14 @@ import { InstanceStatus } from '@companion-module/base'
 export function logResponse(response) {
 	if (this.config.verbose) {
 		console.log(response)
-		//this.log('debug', `Data Recieved:\n${JSON.stringify(response.data)}`)
 	}
 	if (response.data !== undefined) {
 		this.updateStatus(InstanceStatus.Ok)
-		this.log('debug', `Data Recieved:\n${JSON.stringify(response.data)}`)
+		const data = JSON.stringify(response.data)
+		if (this.config.verbose) {
+			this.log('debug', `Data Recieved:\n${data}`)
+		}
+		this.parseResponse(data)
 	} else {
 		this.updateStatus(InstanceStatus.UnknownWarning, 'No Data')
 		this.log('warn', `Response contains no data`)

@@ -1,5 +1,5 @@
 import { Regex } from '@companion-module/base'
-import { default_port, choices } from './consts.js'
+import { choices } from './consts.js'
 
 // Return config fields for web config
 export function getConfigFields() {
@@ -31,6 +31,14 @@ export function getConfigFields() {
 			range: true,
 			step: 0.5,
 			tooltip: `Poll rate. Set to 0 to turn off`,
+		},
+		{
+			type: 'multidropdown',
+			id: 'poll',
+			label: 'Poll Data',
+			witdth: 6,
+			default: [choices.polling[0].id, choices.polling[2].id],
+			choices: choices.polling,
 		},
         {
 			type: 'checkbox',

@@ -1,6 +1,6 @@
 import { cmd } from './consts.js'
 
-export function buildMsg (path, cmd, dios, param) {
+export function buildMsg (path, msgCmd, dios, param) {
 	if (!Array.isArray(dios)) {
 		
 		if(!isNaN(dios)){
@@ -14,8 +14,8 @@ export function buildMsg (path, cmd, dios, param) {
 	}
 	let msg = path
 	for (let i = 0; i < dios.length; i++) {
-		msg = msg !== path ? msg + '&' : msg
-		msg += cmd + dios[i].toString(10).padStart(2, '0') + '=' + param
+		msg = msg !== path ? msg + cmd.char.ampersand : msg
+		msg += msgCmd + dios[i].toString(10).padStart(2, cmd.char.pad) + cmd.char.eq + param
 	}
 	if (this.config.verbose){
         self.log('debug', `Message Built: ${msg}`)
@@ -36,8 +36,5 @@ export async function sendMsg (msg) {
 }
 
 export async function queryOnConnect(){
-	let msg = cmd.get.path
-	msg += `${cmd.get.date}=?&${cmd.get.time}=?&${cmd.get.location}=?&${cmd.get.description}=?`
-	msg += `&${cmd.get.firmware}=?&${cmd.get.model}=?&${cmd.get.serial}=?&${cmd.get.macAddr}=?&${cmd.get.ip}=?`
-	await this.sendMsg(msg)
+	await this.sendMsg(`${cmd.get.path}${cmd.get.date}=?&${cmd.get.time}=?&${cmd.get.location}=?&${cmd.get.description}=?&${cmd.get.firmware}=?&${cmd.get.model}=?&${cmd.get.serial}=?&${cmd.get.macAddr}=?&${cmd.get.ip}=?`)
 }

@@ -1,7 +1,8 @@
 {
-	"name": "moxa-iologik-e2200series-http",
-	"version": "0.1.0",
+	"name": "moxa-e2210http",
+	"version": "1.0.0",
 	"main": "src/main.js",
+	"type": "module",
 	"scripts": {
 		"format": "prettier -w .",
 		"package": "companion-module-build"

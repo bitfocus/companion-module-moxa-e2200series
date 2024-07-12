@@ -2,8 +2,8 @@ import { combineRgb } from '@companion-module/base'
 
 export const choices = {
 	device: [
-		{ id: 0, label: 'e2210', di: 12, do: 8 },
-		{ id: 1, label: 'e2212', di: 8, do: 8 },
+		{ id: 0, label: 'e2210' },
+		{ id: 1, label: 'e2212' },
 	],
     polling: [
 		{ id: 0, label: 'DI: Status' },

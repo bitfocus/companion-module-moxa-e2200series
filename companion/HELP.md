@@ -17,8 +17,9 @@ All actions can be performed against multiple DIs/DOs at once.
 
 ### Feedbacks
 
-- **DI Count Start**
+- **DI Counter**
 - **DI Mode**
+- **DI Status**
 - **DI Trigger**
 - **DO Mode**
 - **DO Pulse**

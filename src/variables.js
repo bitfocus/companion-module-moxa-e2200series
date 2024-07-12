@@ -16,7 +16,7 @@ export async function UpdateVariableDefinitions (self) {
 
 	for (let i = 0; i < self.moxa.inputs.length; i++) {
 		variableList.push({ variableId: `count_input_${i}`, name: `DI: Counter ${i}` })	
-		variableList.push({ variableId: `filter_input_${i}`, name: `DI: filter ${i}` })	
+		variableList.push({ variableId: `filter_input_${i}`, name: `DI: Filter ${i}` })	
 	}
 	for (let i = 0; i < self.moxa.outputs.length; i++) {
 		variableList.push({ variableId: `lowWidth_output_${i}`, name: `DO: Pulse Low Width ${i}` })	

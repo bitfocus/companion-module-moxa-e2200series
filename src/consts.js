@@ -16,7 +16,7 @@ export const choices = {
         { id: 3, label: 'DO: Status' },
         { id: 4, label: 'DO: Pulse' },
 	],
-	e2210inputs: [
+	e2210inputsDigital: [
 		{ id: 0, label: 'Input 0' },
 		{ id: 1, label: 'Input 1' },
 		{ id: 2, label: 'Input 2' },
@@ -30,7 +30,7 @@ export const choices = {
 		{ id: 10, label: 'Input 10' },
 		{ id: 11, label: 'Input 11' },
 	],
-	e2212inputs: [
+	e2212inputsDigital: [
 		{ id: 0, label: 'Input 0' },
 		{ id: 1, label: 'Input 1' },
 		{ id: 2, label: 'Input 2' },
@@ -44,7 +44,7 @@ export const choices = {
 		{ id: 10, label: 'Input 10' },
 		{ id: 11, label: 'Input 11' },
 	],
-	e2214inputs: [
+	e2214inputsDigital: [
 		{ id: 0, label: 'Input 0' },
 		{ id: 1, label: 'Input 1' },
 		{ id: 2, label: 'Input 2' },
@@ -52,7 +52,7 @@ export const choices = {
 		{ id: 4, label: 'Input 4' },
 		{ id: 5, label: 'Input 5' },
 	],
-	e2242inputs: [
+	e2242inputsDigital: [
 		{ id: 0, label: 'Input 0' },
 		{ id: 1, label: 'Input 1' },
 		{ id: 2, label: 'Input 2' },
@@ -66,9 +66,9 @@ export const choices = {
 		{ id: 10, label: 'Input 10' },
 		{ id: 11, label: 'Input 11' },
 	],
-	e2260inputs: [],
-	e2262inputs: [],
-	e2210outputs: [
+	e2260inputsDigital: [],
+	e2262inputsDigital: [],
+	e2210outputsDigital: [
 		{ id: 0, label: 'Output 0' },
 		{ id: 1, label: 'Output 1' },
 		{ id: 2, label: 'Output 2' },
@@ -78,29 +78,7 @@ export const choices = {
 		{ id: 6, label: 'Output 6' },
 		{ id: 7, label: 'Output 7' },
 	],
-	e2212outputs: [
-		{ id: 0, label: 'Output 0' },
-		{ id: 1, label: 'Output 1' },
-		{ id: 2, label: 'Output 2' },
-		{ id: 3, label: 'Output 3' },
-		{ id: 4, label: 'Output 4' },
-		{ id: 5, label: 'Output 5' },
-		{ id: 6, label: 'Output 6' },
-		{ id: 7, label: 'Output 7' },
-		{ id: 8, label: 'Output 8' },
-		{ id: 9, label: 'Output 9' },
-		{ id: 10, label: 'Output 10' },
-		{ id: 11, label: 'Output 11' },
-	],
-	e2214outputs: [
-		{ id: 0, label: 'Output 0' },
-		{ id: 1, label: 'Output 1' },
-		{ id: 2, label: 'Output 2' },
-		{ id: 3, label: 'Output 3' },
-		{ id: 4, label: 'Output 4' },
-		{ id: 5, label: 'Output 5' },
-	],
-	e2242outputs: [
+	e2212outputsDigital: [
 		{ id: 0, label: 'Output 0' },
 		{ id: 1, label: 'Output 1' },
 		{ id: 2, label: 'Output 2' },
@@ -114,13 +92,35 @@ export const choices = {
 		{ id: 10, label: 'Output 10' },
 		{ id: 11, label: 'Output 11' },
 	],
-	e2260outputs: [
+	e2214outputsDigital: [
+		{ id: 0, label: 'Output 0' },
+		{ id: 1, label: 'Output 1' },
+		{ id: 2, label: 'Output 2' },
+		{ id: 3, label: 'Output 3' },
+		{ id: 4, label: 'Output 4' },
+		{ id: 5, label: 'Output 5' },
+	],
+	e2242outputsDigital: [
+		{ id: 0, label: 'Output 0' },
+		{ id: 1, label: 'Output 1' },
+		{ id: 2, label: 'Output 2' },
+		{ id: 3, label: 'Output 3' },
+		{ id: 4, label: 'Output 4' },
+		{ id: 5, label: 'Output 5' },
+		{ id: 6, label: 'Output 6' },
+		{ id: 7, label: 'Output 7' },
+		{ id: 8, label: 'Output 8' },
+		{ id: 9, label: 'Output 9' },
+		{ id: 10, label: 'Output 10' },
+		{ id: 11, label: 'Output 11' },
+	],
+	e2260outputsDigital: [
 		{ id: 0, label: 'Output 0' },
 		{ id: 1, label: 'Output 1' },
 		{ id: 2, label: 'Output 2' },
 		{ id: 3, label: 'Output 3' },
 	],
-	e2262outputs: [
+	e2262outputsDigital: [
 		{ id: 0, label: 'Output 0' },
 		{ id: 1, label: 'Output 1' },
 		{ id: 2, label: 'Output 2' },

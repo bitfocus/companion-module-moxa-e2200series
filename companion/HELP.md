@@ -1,6 +1,7 @@
 ## Moxa ioLogik E2200 Series Control
 
-DIO Control for the Moxa ioLogik e2210, e2212, e2214, e2242, e2260 and e2262. 
+DIO Control for the Moxa ioLogik e2210, e2212, e2214, e2242, e2260 and e2262 using HTTP.
+
 
 ### Actions
 

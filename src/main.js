@@ -40,43 +40,43 @@ class ioLogik_E2200 extends InstanceBase {
 			delete this.moxa
 		}
 		this.moxa = {
-			inputs: [],
-			outputs: [],
+			inputsDigital: [],
+			outputsDigital: [],
 			di: [],
 			do: [],
 		}
 		switch (this.config.model) {
 			case choices.device[0].id:
-				this.moxa.inputs = choices.e2210inputs
-				this.moxa.outputs = choices.e2210outputs
+				this.moxa.inputsDigital = choices.e2210inputsDigital
+				this.moxa.outputsDigital = choices.e2210outputsDigital
 				break
 			case choices.device[1].id:
-				this.moxa.inputs = choices.e2212inputs
-				this.moxa.outputs = choices.e2212outputs
+				this.moxa.inputsDigital = choices.e2212inputsDigital
+				this.moxa.outputsDigital = choices.e2212outputsDigital
 				break
 			case choices.device[2].id:
-				this.moxa.inputs = choices.e2214inputs
-				this.moxa.outputs = choices.e2214outputs
+				this.moxa.inputsDigital = choices.e2214inputsDigital
+				this.moxa.outputsDigital = choices.e2214outputsDigital
 				break
 			case choices.device[3].id:
-				this.moxa.inputs = choices.e2242inputs
-				this.moxa.outputs = choices.e2242outputs
+				this.moxa.inputsDigital = choices.e2242inputsDigital
+				this.moxa.outputsDigital = choices.e2242outputsDigital
 				break
 			case choices.device[4].id:
-				this.moxa.inputs = choices.e2260inputs
-				this.moxa.outputs = choices.e2260outputs
+				this.moxa.inputsDigital = choices.e2260inputsDigital
+				this.moxa.outputsDigital = choices.e2260outputsDigital
 				break
 			case choices.device[5].id:
-				this.moxa.inputs = choices.e2262inputs
-				this.moxa.outputs = choices.e2262outputs
+				this.moxa.inputsDigital = choices.e2262inputsDigital
+				this.moxa.outputsDigital = choices.e2262outputsDigital
 				break
 			default:
 				this.updateStatus(InstanceStatus.BadConfig)
-				this.log('error', `Unrecognised device selection: ${this.config.device}`)
+				this.log('error', `Unrecognised device selection: ${this.config.device}`) // This should never occur
 				return undefined
 		}
-		if (this.config.model !== choices.device[4].id && this.config.model !== choices.device[5].id) {
-			const inputs = Object.keys(this.moxa.inputs)
+		if (this.moxa.inputsDigital.length > 0) {
+			const inputs = Object.keys(this.moxa.inputsDigital)
 			for (const i in inputs) {
 				this.moxa.di[i] = {
 					mode: false,
@@ -87,7 +87,7 @@ class ioLogik_E2200 extends InstanceBase {
 				}
 			}
 		}
-		const outputs = Object.keys(this.moxa.outputs)
+		const outputs = Object.keys(this.moxa.outputsDigital)
 		for (const o in outputs) {
 			this.moxa.do[o] = {
 				mode: false,

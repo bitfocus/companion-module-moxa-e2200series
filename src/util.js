@@ -36,5 +36,15 @@ export async function sendMsg (msg) {
 }
 
 export async function queryOnConnect(){
-	await this.sendMsg(`${cmd.get.path}${cmd.get.date}=?&${cmd.get.time}=?&${cmd.get.location}=?&${cmd.get.description}=?&${cmd.get.firmware}=?&${cmd.get.model}=?&${cmd.get.serial}=?&${cmd.get.macAddr}=?&${cmd.get.ip}=?`)
+	const w = cmd.char.eq + cmd.char.query
+	const q = w + cmd.char.ampersand
+	const outputs = Object.keys(this.moxa.outputsDigital)
+	await this.sendMsg(cmd.get.path + cmd.get.date + q + cmd.get.time + q + cmd.get.location + q + cmd.get.description + q + cmd.get.firmware + q + cmd.get.model + q + cmd.get.serial + q + cmd.get.macAddr + q + cmd.get.ip + w)
+	await this.sendMsg(this.buildMsg(cmd.get.path, cmd.set.do.lowWidth, outputs, cmd.char.query))
+	await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.do.highWidth, outputs, cmd.char.query))
+	if (this.moxa.di.length > 0) {
+		const inputs = Object.keys(this.moxa.inputsDigital)
+		await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
+		await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
+	}
 }

@@ -1,11 +1,11 @@
-import { choices, cmd, actionOptions} from './consts.js'
+import { cmd, actionOptions} from './consts.js'
 
 export async function UpdateActions (self) {
 	let actionDefs = []
 	const doOption = {
 		...actionOptions.do,
-		default: self.moxa.outputs[0].id,
-		choices: self.moxa.outputs,
+		default: self.moxa.outputsDigital[0].id,
+		choices: self.moxa.outputsDigital,
 	}
 	actionDefs['set_DO_status'] = {
 		name: 'Set DO Status',
@@ -21,11 +21,11 @@ export async function UpdateActions (self) {
 		name: 'Get DO Status',
 		options: [],
 		callback: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.status, outputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.status, outputs, cmd.char.query))
 		},
 	}
@@ -43,11 +43,11 @@ export async function UpdateActions (self) {
 		name: 'Get DO Mode',
 		options: [],
 		callback: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.mode, outputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.mode, outputs, cmd.char.query))
 		},
 	}
@@ -65,11 +65,11 @@ export async function UpdateActions (self) {
 		name: 'Get DO Pulse',
 		options: [],
 		callback: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.pulseStart, outputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.pulseStart, outputs, cmd.char.query))
 		},
 	}
@@ -109,21 +109,21 @@ export async function UpdateActions (self) {
 		name: 'Get DO Pulse Width',
 		options: [],
 		callback: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.set.do.lowWidth, outputs, cmd.char.query))
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.set.do.highWidth, outputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const outputs = Object.keys(self.moxa.outputs)
+			const outputs = Object.keys(self.moxa.outputsDigital)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.set.do.lowWidth, outputs, cmd.char.query))
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.highWidth, outputs, cmd.char.query))
 		},
 	}
-	if (self.config.model !== choices.device[4].id && self.config.model !== choices.device[5].id) {
+	if (self.moxa.di.length > 0) {
 		const diOption = {
 			...actionOptions.di,
-			default: self.moxa.inputs[0].id,
-			choices: self.moxa.inputs,
+			default: self.moxa.inputsDigital[0].id,
+			choices: self.moxa.inputsDigital,
 		}
 		actionDefs['set_DI_mode'] = {
 			name: 'Set DI Mode',
@@ -139,11 +139,11 @@ export async function UpdateActions (self) {
 			name: 'Get DI Mode',
 			options: [],
 			callback: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
 			},
 			subscribe: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
 			},
 		}
@@ -161,11 +161,11 @@ export async function UpdateActions (self) {
 			name: 'Get DI Trigger',
 			options: [],
 			callback: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
 			},
 			subscribe: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
 			},
 		}
@@ -199,11 +199,11 @@ export async function UpdateActions (self) {
 			name: 'Get DI Filter',
 			options: [],
 			callback: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
 			},
 			subscribe: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
 			},
 		}
@@ -211,11 +211,11 @@ export async function UpdateActions (self) {
 			name: 'Get DI Count',
 			options: [],
 			callback: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
 			},
 			subscribe: async () => {
-				const inputs = Object.keys(self.moxa.inputs)
+				const inputs = Object.keys(self.moxa.inputsDigital)
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
 			},
 		}

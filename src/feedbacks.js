@@ -1,11 +1,11 @@
-import { choices, cmd, feedbackOptions, fb_styles } from './consts.js'
+import { cmd, feedbackOptions, fb_styles } from './consts.js'
 
 export async function UpdateFeedbacks (self) {
 	let feedbackDefs = []
 	const doOption = {
 		...feedbackOptions.do,
-		default: self.moxa.outputs[0].id,
-		choices: self.moxa.outputs,
+		default: self.moxa.outputsDigital[0].id,
+		choices: self.moxa.outputsDigital,
 	}
 	
 	feedbackDefs['do_status'] = {
@@ -44,11 +44,11 @@ export async function UpdateFeedbacks (self) {
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.pulseStart, options.do, cmd.char.query))
 		}
 	}
-	if (self.config.model !== choices.device[4].id && self.config.model !== choices.device[5].id) {
+	if (self.moxa.di.length > 0) {
 		const diOption = {
 			...feedbackOptions.di,
-			default: self.moxa.inputs[0].id,
-			choices: self.moxa.inputs,
+			default: self.moxa.inputsDigital[0].id,
+			choices: self.moxa.inputsDigital,
 		}
 		feedbackDefs['di_status'] = {
 			name: 'DI Status',

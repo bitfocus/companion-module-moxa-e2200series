@@ -26,10 +26,12 @@ export function stopPolling() {
 
 export async function pollStatus() {
 	if (this.axios) {
-		await this.sendMsg(`${cmd.get.path}${cmd.get.time}=${cmd.char.query}`)
-        const inputs = Object.keys(this.moxa.inputs)
-		const outputs = Object.keys(this.moxa.outputs)
-		if (this.config.device !== choices.device[4].id && this.config.device !== choices.device[5].id) {
+		const w = cmd.char.eq + cmd.char.query
+		const q = w + cmd.char.ampersand
+		await this.sendMsg(cmd.get.path + cmd.get.time + q + cmd.char.ampersand + cmd.get.date + w)
+		const outputs = Object.keys(this.moxa.outputsDigital)
+		if (this.moxa.di.length > 0) {
+			const inputs = Object.keys(this.moxa.inputsDigital)
 			if (this.config.poll.includes(choices.polling[0].id)){
 				await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.status, inputs, cmd.char.query))
 			}

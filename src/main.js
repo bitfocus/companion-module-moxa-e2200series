@@ -25,7 +25,7 @@ class ioLogik_E2200 extends InstanceBase {
 
 	// When module gets deleted
 	async destroy() {
-		this.log('debug', 'destroy')
+		this.log('debug', `destroy: ${this.id}`)
 		this.stopPolling()
 		if (this.axios) {
 			delete this.axios
@@ -45,17 +45,46 @@ class ioLogik_E2200 extends InstanceBase {
 			di: [],
 			do: [],
 		}
-		this.moxa.inputs = this.config.model === choices.device[0].id ? choices.e2210inputs : choices.e2212inputs
-		this.moxa.outputs = this.config.model === choices.device[0].id ? choices.e2210outputs : choices.e2212outputs
-		const inputs = Object.keys(this.moxa.inputs)
-		for (const i in inputs) {
-			this.moxa.di[i] = {
-				mode: false,
-				status: false,
-				filter: 0,
-				trigger: 0,
-				cntStart: false,
-				
+		switch (this.config.model) {
+			case choices.device[0].id:
+				this.moxa.inputs = choices.e2210inputs
+				this.moxa.outputs = choices.e2210outputs
+				break
+			case choices.device[1].id:
+				this.moxa.inputs = choices.e2212inputs
+				this.moxa.outputs = choices.e2212outputs
+				break
+			case choices.device[2].id:
+				this.moxa.inputs = choices.e2214inputs
+				this.moxa.outputs = choices.e2214outputs
+				break
+			case choices.device[3].id:
+				this.moxa.inputs = choices.e2242inputs
+				this.moxa.outputs = choices.e2242outputs
+				break
+			case choices.device[4].id:
+				this.moxa.inputs = choices.e2260inputs
+				this.moxa.outputs = choices.e2260outputs
+				break
+			case choices.device[5].id:
+				this.moxa.inputs = choices.e2262inputs
+				this.moxa.outputs = choices.e2262outputs
+				break
+			default:
+				this.updateStatus(InstanceStatus.BadConfig)
+				this.log('error', `Unrecognised device selection: ${this.config.device}`)
+				return undefined
+		}
+		if (this.config.model !== choices.device[4].id && this.config.model !== choices.device[5].id) {
+			const inputs = Object.keys(this.moxa.inputs)
+			for (const i in inputs) {
+				this.moxa.di[i] = {
+					mode: false,
+					status: false,
+					filter: 0,
+					trigger: 0,
+					cntStart: false,
+				}
 			}
 		}
 		const outputs = Object.keys(this.moxa.outputs)

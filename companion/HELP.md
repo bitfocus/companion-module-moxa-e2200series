@@ -1,9 +1,10 @@
 ## Moxa ioLogik E2200 Series Control
 
-Control the Moxa ioLogik e2210 and e2212 
+DIO Control for the Moxa ioLogik e2210, e2212, e2214, e2242, e2260 and e2262. 
 
 ### Actions
 
+- **Get DI Count**
 - **Get / Set DI Count Start**
 - **Get / Set DI Filter**
 - **Get / Set DI Mode**

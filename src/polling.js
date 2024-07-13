@@ -29,16 +29,21 @@ export async function pollStatus() {
 		await this.sendMsg(`${cmd.get.path}${cmd.get.time}=${cmd.char.query}`)
         const inputs = Object.keys(this.moxa.inputs)
 		const outputs = Object.keys(this.moxa.outputs)
-		if (this.config.poll.includes(choices.polling[0].id)){
-			await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.status, inputs, cmd.char.query))
-		}
-		if (this.config.poll.includes(choices.polling[1].id)){
-			await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
-		}
-		if (this.config.poll.includes(choices.polling[2].id)){
-			await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.do.status, outputs, cmd.char.query))
+		if (this.config.device !== choices.device[4].id && this.config.device !== choices.device[5].id) {
+			if (this.config.poll.includes(choices.polling[0].id)){
+				await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.status, inputs, cmd.char.query))
+			}
+			if (this.config.poll.includes(choices.polling[1].id)){
+				await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
+			}
+			if (this.config.poll.includes(choices.polling[2].id)){
+				await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.di.countStart, inputs, cmd.char.query))
+			}
 		}
 		if (this.config.poll.includes(choices.polling[3].id)){
+			await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.do.status, outputs, cmd.char.query))
+		}
+		if (this.config.poll.includes(choices.polling[4].id)){
 			await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.do.pulseStart, outputs, cmd.char.query))
 		}
 	}

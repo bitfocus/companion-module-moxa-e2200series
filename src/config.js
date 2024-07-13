@@ -37,8 +37,9 @@ export function getConfigFields() {
 			id: 'poll',
 			label: 'Poll Data',
 			witdth: 6,
-			default: [choices.polling[0].id, choices.polling[2].id],
+			default: [choices.polling[0].id, choices.polling[3].id],
 			choices: choices.polling,
+			tooltip: 'DI polling for the e2260 & e2262 is disabled.'
 		},
         {
 			type: 'checkbox',

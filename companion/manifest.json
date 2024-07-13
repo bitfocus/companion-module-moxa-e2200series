@@ -2,7 +2,7 @@
 	"id": "moxa-e2200series",
 	"name": "moxa-e2200series",
 	"shortname": "ioLogik e2200 Series",
-	"description": "Companion module for Moxa ioLogik e2200 series DIO units",
+	"description": "Companion module for Moxa ioLogik e2200 series",
 	"version": "0.0.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-moxa-e2200series.git",
@@ -21,6 +21,6 @@
 	},
 	"legacyIds": [],
 	"manufacturer": "Moxa",
-	"products": ["ioLogik e2210", "ioLogik e2212"],
-	"keywords": ["DIO", "DI", "DO", "GPIO", "GPI", "GPO"]
+	"products": ["e2210", "e2212", "e2214", "e2242", "e2260", "e2262"],
+	"keywords": ["DIO", "DI", "DO", "GPIO", "GPI", "GPO", "ioLogik"]
 }

@@ -1,4 +1,4 @@
-//import { choices } from './consts.js'
+import { choices } from './consts.js'
 
 export async function UpdateVariableDefinitions (self) {
 	let variableList = []
@@ -13,10 +13,11 @@ export async function UpdateVariableDefinitions (self) {
 		{ variableId: `macAddr`, name: `MAC Address` },
 		{ variableId: `IP`, name: `IP Address` }
 	)
-
-	for (let i = 0; i < self.moxa.inputs.length; i++) {
-		variableList.push({ variableId: `count_input_${i}`, name: `DI: Counter ${i}` })	
-		variableList.push({ variableId: `filter_input_${i}`, name: `DI: Filter ${i}` })	
+	if (self.config.model !== choices.device[4].id && self.config.model !== choices.device[5].id) {
+		for (let i = 0; i < self.moxa.inputs.length; i++) {
+			variableList.push({ variableId: `count_input_${i}`, name: `DI: Counter ${i}` })	
+			variableList.push({ variableId: `filter_input_${i}`, name: `DI: Filter ${i}` })	
+		}
 	}
 	for (let i = 0; i < self.moxa.outputs.length; i++) {
 		variableList.push({ variableId: `lowWidth_output_${i}`, name: `DO: Pulse Low Width ${i}` })	

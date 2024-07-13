@@ -1,18 +1,12 @@
-//import { Regex } from '@companion-module/base'
-import { cmd, actionOptions} from './consts.js'
+import { choices, cmd, actionOptions} from './consts.js'
 
 export async function UpdateActions (self) {
+	let actionDefs = []
 	const doOption = {
 		...actionOptions.do,
 		default: self.moxa.outputs[0].id,
 		choices: self.moxa.outputs,
 	}
-	const diOption = {
-		...actionOptions.di,
-		default: self.moxa.inputs[0].id,
-		choices: self.moxa.inputs,
-	}
-	let actionDefs = []
 	actionDefs['set_DO_status'] = {
 		name: 'Set DO Status',
 		options: [doOption, actionOptions.doStatus],
@@ -125,87 +119,106 @@ export async function UpdateActions (self) {
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.highWidth, outputs, cmd.char.query))
 		},
 	}
-	actionDefs['set_DI_mode'] = {
-		name: 'Set DI Mode',
-		options: [diOption, actionOptions.diMode],
-		callback: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.mode, options.di, options.mode))
-		},
-		subscribe: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, options.di, cmd.char.query))
-		},
-	}
-	actionDefs['get_DI_mode'] = {
-		name: 'Get DI Mode',
-		options: [],
-		callback: async () => {
-			const inputs = Object.keys(self.moxa.inputs)
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
-		},
-		subscribe: async () => {
-			const inputs = Object.keys(self.moxa.inputs)
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
-		},
-	}
-	actionDefs['set_DI_trigger'] = {
-		name: 'Set DI Trigger',
-		options: [diOption, actionOptions.diTrigger],
-		callback: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.trigger, options.di, options.mode))
-		},
-		subscribe: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, options.di, cmd.char.query))
-		},
-	}
-	actionDefs['get_DI_trigger'] = {
-		name: 'Get DI Trigger',
-		options: [],
-		callback: async () => {
-			const inputs = Object.keys(self.moxa.inputs)
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
-		},
-		subscribe: async () => {
-			const inputs = Object.keys(self.moxa.inputs)
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
-		},
-	}
-	actionDefs['set_DI_CNT_start'] = {
-		name: 'Set DI Count Start',
-		options: [diOption, actionOptions.diCntStart],
-		callback: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.countStart, options.di, options.mode))
-		},
-		subscribe: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.countStart, options.di, cmd.char.query))
-		},
-	}
-	actionDefs['set_DI_filter'] = {
-		name: 'Set DI Filter',
-		options: [diOption, actionOptions.diFilter],
-		callback: async ({ options }) => {
-			let filter = Math.number(await self.parseVariablesInString(options.filter))
-			if (isNaN(filter) || filter < 0.5 || filter > 8480) {
-				self.log('warn', `set_DI_filter has been passed an out of range param ${filter}`)
-				return undefined
-			}
-			filter = parseInt(filter * 2)
-			await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.filter, options.di, filter))
-		},
-		subscribe: async ({ options }) => {
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, options.di, cmd.char.query))
-		},
-	}
-	actionDefs['get_DI_filter'] = {
-		name: 'Get DI Filter',
-		options: [],
-		callback: async () => {
-			const inputs = Object.keys(self.moxa.inputs)
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
-		},
-		subscribe: async () => {
-			const inputs = Object.keys(self.moxa.inputs)
-			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
-		},
+	if (self.config.model !== choices.device[4].id && self.config.model !== choices.device[5].id) {
+		const diOption = {
+			...actionOptions.di,
+			default: self.moxa.inputs[0].id,
+			choices: self.moxa.inputs,
+		}
+		actionDefs['set_DI_mode'] = {
+			name: 'Set DI Mode',
+			options: [diOption, actionOptions.diMode],
+			callback: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.mode, options.di, options.mode))
+			},
+			subscribe: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, options.di, cmd.char.query))
+			},
+		}
+		actionDefs['get_DI_mode'] = {
+			name: 'Get DI Mode',
+			options: [],
+			callback: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
+			},
+			subscribe: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
+			},
+		}
+		actionDefs['set_DI_trigger'] = {
+			name: 'Set DI Trigger',
+			options: [diOption, actionOptions.diTrigger],
+			callback: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.trigger, options.di, options.mode))
+			},
+			subscribe: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, options.di, cmd.char.query))
+			},
+		}
+		actionDefs['get_DI_trigger'] = {
+			name: 'Get DI Trigger',
+			options: [],
+			callback: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
+			},
+			subscribe: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
+			},
+		}
+		actionDefs['set_DI_CNT_start'] = {
+			name: 'Set DI Count Start',
+			options: [diOption, actionOptions.diCntStart],
+			callback: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.countStart, options.di, options.mode))
+			},
+			subscribe: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.countStart, options.di, cmd.char.query))
+			},
+		}
+		actionDefs['set_DI_filter'] = {
+			name: 'Set DI Filter',
+			options: [diOption, actionOptions.diFilter],
+			callback: async ({ options }) => {
+				let filter = Math.number(await self.parseVariablesInString(options.filter))
+				if (isNaN(filter) || filter < 0.5 || filter > 8480) {
+					self.log('warn', `set_DI_filter has been passed an out of range param ${filter}`)
+					return undefined
+				}
+				filter = parseInt(filter * 2)
+				await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.filter, options.di, filter))
+			},
+			subscribe: async ({ options }) => {
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, options.di, cmd.char.query))
+			},
+		}
+		actionDefs['get_DI_filter'] = {
+			name: 'Get DI Filter',
+			options: [],
+			callback: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
+			},
+			subscribe: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
+			},
+		}
+		actionDefs['get_DI_count'] = {
+			name: 'Get DI Count',
+			options: [],
+			callback: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
+			},
+			subscribe: async () => {
+				const inputs = Object.keys(self.moxa.inputs)
+				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.count, inputs, cmd.char.query))
+			},
+		}
 	}
 	self.setActionDefinitions(actionDefs)
 }

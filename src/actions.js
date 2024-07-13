@@ -139,11 +139,11 @@ export async function UpdateActions (self) {
 		name: 'Get DI Mode',
 		options: [],
 		callback: async () => {
-			const inputs = Object.keys(this.moxa.inputs)
+			const inputs = Object.keys(self.moxa.inputs)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const inputs = Object.keys(this.moxa.inputs)
+			const inputs = Object.keys(self.moxa.inputs)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, inputs, cmd.char.query))
 		},
 	}
@@ -161,11 +161,11 @@ export async function UpdateActions (self) {
 		name: 'Get DI Trigger',
 		options: [],
 		callback: async () => {
-			const inputs = Object.keys(this.moxa.inputs)
+			const inputs = Object.keys(self.moxa.inputs)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const inputs = Object.keys(this.moxa.inputs)
+			const inputs = Object.keys(self.moxa.inputs)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, inputs, cmd.char.query))
 		},
 	}
@@ -199,11 +199,11 @@ export async function UpdateActions (self) {
 		name: 'Get DI Filter',
 		options: [],
 		callback: async () => {
-			const inputs = Object.keys(this.moxa.inputs)
+			const inputs = Object.keys(self.moxa.inputs)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
 		},
 		subscribe: async () => {
-			const inputs = Object.keys(this.moxa.inputs)
+			const inputs = Object.keys(self.moxa.inputs)
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.filter, inputs, cmd.char.query))
 		},
 	}

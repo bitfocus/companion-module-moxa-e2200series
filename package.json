@@ -1,5 +1,5 @@
 {
-	"name": "moxa-e2210http",
+	"name": "moxa-e2200series",
 	"version": "1.0.0",
 	"main": "src/main.js",
 	"type": "module",
@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/phillipivan/companion-module-moxa-iologike2200http.git"
+		"url": "git+https://github.com/bitfocus/companion-module-moxa-e2200series.git"
 	},
 	"dependencies": {
 		"@companion-module/base": "~1.8.0",

@@ -1,3 +1,2 @@
-# companion-module-moxa-ioLogik-e2200series-http
-
+# companion-module-moxa-e2200series
 See [HELP.md](./companion/HELP.md) and [LICENSE](./LICENSE)

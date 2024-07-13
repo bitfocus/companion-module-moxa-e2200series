@@ -1,12 +1,12 @@
 {
-	"id": "moxa-e2210http",
-	"name": "moxa-e2210http",
+	"id": "moxa-e2200series",
+	"name": "moxa-e2200series",
 	"shortname": "ioLogik e2200 Series",
 	"description": "Companion module for Moxa ioLogik e2200 series DIO units",
 	"version": "0.0.0",
 	"license": "MIT",
-	"repository": "git+https://github.com/phillipivan/companion-module-moxa-iologike2200http.git",
-	"bugs": "https://github.com/phillipivan/companion-module-moxa-iologike2200http/issues",
+	"repository": "git+https://github.com/bitfocus/companion-module-moxa-e2200series.git",
+	"bugs": "https://github.com/bitfocus/companion-module-moxa-e2200series/issues",
 	"maintainers": [
 		{
 			"name": "Phillip Ivan Pietruschka",

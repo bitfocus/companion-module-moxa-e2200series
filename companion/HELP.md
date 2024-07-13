@@ -1,4 +1,4 @@
-## Moxa ioLogik E2200 Series DIO Control
+## Moxa ioLogik E2200 Series Control
 
 Control the Moxa ioLogik e2210 and e2212 
 

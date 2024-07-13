@@ -2,9 +2,9 @@ import { cmd, response } from './consts.js'
 
 export function parseResponse(data) {
     let varList = []
-    const resp = data.replaceAll('"','').split('<br>')
+    const resp = data.replaceAll(cmd.char.quote,'').split(cmd.char.sep)
     for (const element of resp) {
-        const v = element.split('=')
+        const v = element.split(cmd.char.eq)
         if (v.length !== 2) {continue}
         let u = v[0].split(cmd.char._)
         if (u.length === 2) {

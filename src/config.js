@@ -27,10 +27,10 @@ export function getConfigFields() {
 			width: 6,
 			default: 5,
 			min: 0,
-			max: 120,
+			max: 600,
 			range: true,
 			step: 0.5,
-			tooltip: `Poll rate. Set to 0 to turn off`,
+			tooltip: `Set to 0 to turn off`,
 		},
 		{
 			type: 'multidropdown',

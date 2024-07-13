@@ -34,6 +34,10 @@ export const choices = {
 		{ id: 5, label: 'Input 5' },
 		{ id: 6, label: 'Input 6' },
 		{ id: 7, label: 'Input 7' },
+		{ id: 8, label: 'Input 8' },
+		{ id: 9, label: 'Input 9' },
+		{ id: 10, label: 'Input 10' },
+		{ id: 11, label: 'Input 11' },
 	],
 	e2210outputs: [
 		{ id: 0, label: 'Output 0' },
@@ -54,6 +58,10 @@ export const choices = {
 		{ id: 5, label: 'Output 5' },
 		{ id: 6, label: 'Output 6' },
 		{ id: 7, label: 'Output 7' },
+		{ id: 8, label: 'Output 8' },
+		{ id: 9, label: 'Output 9' },
+		{ id: 10, label: 'Output 10' },
+		{ id: 11, label: 'Output 11' },
 	],
 	DIMode: [
 		{ id: 0, label: 'DI' },

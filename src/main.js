@@ -2,7 +2,7 @@ import { InstanceBase, runEntrypoint, InstanceStatus } from '@companion-module/b
 import { UpgradeScripts } from './upgrades.js'
 import { UpdateActions } from './actions.js'
 import { UpdateFeedbacks } from './feedbacks.js'
-import  {UpdateVariableDefinitions } from './variables.js'
+import { UpdateVariableDefinitions } from './variables.js'
 import * as config from './config.js'
 import { choices } from './consts.js'
 import * as logging from './logging.js'
@@ -20,7 +20,7 @@ class ioLogik_E2200 extends InstanceBase {
 	}
 
 	async init(config) {
-		this.configUpdated(config)	
+		this.configUpdated(config)
 	}
 
 	// When module gets deleted
@@ -32,7 +32,7 @@ class ioLogik_E2200 extends InstanceBase {
 		}
 		delete this.moxa
 	}
-	
+
 	async configUpdated(config) {
 		this.stopPolling()
 		this.config = config
@@ -92,7 +92,7 @@ class ioLogik_E2200 extends InstanceBase {
 			this.moxa.do[o] = {
 				mode: false,
 				status: false,
-				pulseStart: false,	
+				pulseStart: false,
 			}
 		}
 		this.updateStatus(InstanceStatus.Connecting)

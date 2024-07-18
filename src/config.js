@@ -39,9 +39,9 @@ export function getConfigFields() {
 			witdth: 6,
 			default: [choices.polling[0].id, choices.polling[3].id],
 			choices: choices.polling,
-			tooltip: 'Date & Time always polled'
+			tooltip: 'Date & Time always polled',
 		},
-        {
+		{
 			type: 'checkbox',
 			id: 'verbose',
 			label: 'Verbose Logs',

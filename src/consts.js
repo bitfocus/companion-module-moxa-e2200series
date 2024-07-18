@@ -9,12 +9,12 @@ export const choices = {
 		{ id: 4, label: 'e2260' },
 		{ id: 5, label: 'e2262' },
 	],
-    polling: [
+	polling: [
 		{ id: 0, label: 'DI: Status' },
 		{ id: 1, label: 'DI: Count' },
 		{ id: 2, label: 'DI: Count Start' },
-        { id: 3, label: 'DO: Status' },
-        { id: 4, label: 'DO: Pulse' },
+		{ id: 3, label: 'DO: Status' },
+		{ id: 4, label: 'DO: Pulse' },
 	],
 	e2210inputsDigital: [
 		{ id: 0, label: 'Input 0' },
@@ -158,15 +158,15 @@ export const choices = {
 }
 
 export const cmd = {
-    char: {
-        sep: '<br>',
-        eq: '=',
-        _: '_',
-        quote: '"',
-        ampersand:'&',
-        query: '?',
-        pad: '0',
-    },
+	char: {
+		sep: '<br>',
+		eq: '=',
+		_: '_',
+		quote: '"',
+		ampersand: '&',
+		query: '?',
+		pad: '0',
+	},
 	get: {
 		path: 'getParam.cgi?',
 		date: 'DATE',
@@ -241,7 +241,6 @@ export const response = {
 	},
 }
 
-
 export const actionOptions = {
 	do: {
 		id: 'do',
@@ -271,14 +270,14 @@ export const actionOptions = {
 		default: choices.DOPulseStart[0].id,
 		choices: choices.DOPulseStart,
 	},
-    doLowWidth: {
+	doLowWidth: {
 		id: 'lowWidth',
 		type: 'textinput',
 		label: 'Low Width (ms)',
 		default: '100',
 		useVariables: true,
 	},
-    doHighWidth: {
+	doHighWidth: {
 		id: 'highWidth',
 		type: 'textinput',
 		label: 'High Width (ms)',
@@ -319,7 +318,7 @@ export const actionOptions = {
 		label: 'Filter (ms)',
 		default: '50',
 		useVariables: true,
-		tooltip: 'Return an number between 0.5 & 8480'
+		tooltip: 'Return an number between 0.5 & 8480',
 	},
 }
 
@@ -379,14 +378,14 @@ export const feedbackOptions = {
 }
 
 export const colours = {
-    black: combineRgb(0, 0, 0),
-    white: combineRgb(255, 255, 255),
-    red: combineRgb(255, 0, 0)
+	black: combineRgb(0, 0, 0),
+	white: combineRgb(255, 255, 255),
+	red: combineRgb(255, 0, 0),
 }
 
 export const fb_styles = {
-    defaultRed: {
-        bgcolor: colours.red,
-        color: colours.black,
-    }
+	defaultRed: {
+		bgcolor: colours.red,
+		color: colours.black,
+	},
 }

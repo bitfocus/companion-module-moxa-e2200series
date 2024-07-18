@@ -1,6 +1,6 @@
-import { cmd, actionOptions} from './consts.js'
+import { cmd, actionOptions } from './consts.js'
 
-export async function UpdateActions (self) {
+export async function UpdateActions(self) {
 	let actionDefs = []
 	const doOption = {
 		...actionOptions.do,

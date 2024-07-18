@@ -1,13 +1,13 @@
 import { cmd, feedbackOptions, fb_styles } from './consts.js'
 
-export async function UpdateFeedbacks (self) {
+export async function UpdateFeedbacks(self) {
 	let feedbackDefs = []
 	const doOption = {
 		...feedbackOptions.do,
 		default: self.moxa.outputsDigital[0].id,
 		choices: self.moxa.outputsDigital,
 	}
-	
+
 	feedbackDefs['do_status'] = {
 		name: 'DO Status',
 		type: 'boolean',
@@ -30,7 +30,7 @@ export async function UpdateFeedbacks (self) {
 		},
 		subscribe: async ({ options }) => {
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.mode, options.do, cmd.char.query))
-		}
+		},
 	}
 	feedbackDefs['do_pulse'] = {
 		name: 'DO Pulse',
@@ -42,7 +42,7 @@ export async function UpdateFeedbacks (self) {
 		},
 		subscribe: async ({ options }) => {
 			await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.do.pulseStart, options.do, cmd.char.query))
-		}
+		},
 	}
 	if (self.moxa.di.length > 0) {
 		const diOption = {
@@ -60,7 +60,7 @@ export async function UpdateFeedbacks (self) {
 			},
 			subscribe: async ({ options }) => {
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.status, options.di, cmd.char.query))
-			}
+			},
 		}
 		feedbackDefs['di_cntStart'] = {
 			name: 'DI Counter',
@@ -72,7 +72,7 @@ export async function UpdateFeedbacks (self) {
 			},
 			subscribe: async ({ options }) => {
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.countStart, options.di, cmd.char.query))
-			}
+			},
 		}
 		feedbackDefs['di_mode'] = {
 			name: 'DI Mode',
@@ -84,7 +84,7 @@ export async function UpdateFeedbacks (self) {
 			},
 			subscribe: async ({ options }) => {
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.mode, options.di, cmd.char.query))
-			}
+			},
 		}
 		feedbackDefs['di_trigger'] = {
 			name: 'DI Trigger',
@@ -96,7 +96,7 @@ export async function UpdateFeedbacks (self) {
 			},
 			subscribe: async ({ options }) => {
 				await self.sendMsg(self.buildMsg(cmd.get.path, cmd.get.di.trigger, options.di, cmd.char.query))
-			}
+			},
 		}
 	}
 	self.setFeedbackDefinitions(feedbackDefs)

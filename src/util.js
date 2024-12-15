@@ -26,14 +26,15 @@ export async function sendMsg(msg) {
 	if (msg === undefined) {
 		return undefined
 	}
-	try {
-		const response = await this.axios.get(msg)
-		this.logResponse(response)
-		return true
-	} catch (error) {
-		this.logError(error)
-		return undefined
-	}
+	await this.queue.add(async() => {
+		try {
+			const response = await this.axios.get(msg)
+			this.logResponse(response)
+		} catch (error) {
+			this.logError(error)
+		}
+	})
+	
 }
 
 export async function queryOnConnect() {

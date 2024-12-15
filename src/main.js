@@ -10,6 +10,7 @@ import * as polling from './polling.js'
 import * as response from './parseResponse.js'
 import * as utils from './util.js'
 import axios from 'axios'
+import PQueue from 'p-queue'
 
 const timeOut = 5000
 
@@ -17,6 +18,7 @@ class ioLogik_E2200 extends InstanceBase {
 	constructor(internal) {
 		super(internal)
 		Object.assign(this, { ...config, ...logging, ...polling, ...response, ...utils })
+		this.queue = new PQueue({ concurrency: 1, interval: 100, intervalCap: 1 })
 	}
 
 	async init(config) {
@@ -27,6 +29,7 @@ class ioLogik_E2200 extends InstanceBase {
 	async destroy() {
 		this.log('debug', `destroy: ${this.id}`)
 		this.stopPolling()
+		this.queue.clear()
 		if (this.axios) {
 			delete this.axios
 		}
@@ -35,6 +38,7 @@ class ioLogik_E2200 extends InstanceBase {
 
 	async configUpdated(config) {
 		this.stopPolling()
+		this.queue.clear()
 		this.config = config
 		if (this.moxa) {
 			delete this.moxa

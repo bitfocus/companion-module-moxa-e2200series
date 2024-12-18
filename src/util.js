@@ -26,7 +26,7 @@ export async function sendMsg(msg) {
 	if (msg === undefined) {
 		return undefined
 	}
-	await this.queue.add(async() => {
+	await this.queue.add(async () => {
 		try {
 			const response = await this.axios.get(msg)
 			this.logResponse(response)
@@ -34,7 +34,6 @@ export async function sendMsg(msg) {
 			this.logError(error)
 		}
 	})
-	
 }
 
 export async function queryOnConnect() {
@@ -60,7 +59,7 @@ export async function queryOnConnect() {
 			cmd.get.macAddr +
 			q +
 			cmd.get.ip +
-			w
+			w,
 	)
 	await this.sendMsg(this.buildMsg(cmd.get.path, cmd.set.do.lowWidth, outputs, cmd.char.query))
 	await this.sendMsg(this.buildMsg(cmd.get.path, cmd.get.do.highWidth, outputs, cmd.char.query))

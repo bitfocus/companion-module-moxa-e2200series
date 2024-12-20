@@ -17,7 +17,7 @@ export function buildMsg(path, msgCmd, dios, param) {
 		msg += msgCmd + dios[i].toString(10).padStart(2, cmd.char.pad) + cmd.char.eq + param
 	}
 	if (this.config.verbose) {
-		self.log('debug', `Message Built: ${msg}`)
+		this.log('debug', `Message Built: ${msg}`)
 	}
 	return msg
 }

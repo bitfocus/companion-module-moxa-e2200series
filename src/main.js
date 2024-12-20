@@ -19,6 +19,15 @@ class ioLogik_E2200 extends InstanceBase {
 		super(internal)
 		Object.assign(this, { ...config, ...logging, ...polling, ...response, ...utils })
 		this.queue = new PQueue({ concurrency: 1, interval: 100, intervalCap: 1 })
+		this.currentStatus = { status: InstanceStatus.Disconnected, message: '' }
+	}
+
+	checkStatus(status = InstanceStatus.Disconnected, message = '') {
+		if (status === this.currentStatus.status && message === this.currentStatus.message) return false
+		this.updateStatus(status, message.toString())
+		this.currentStatus.status = status
+		this.currentStatus.message = message
+		return true
 	}
 
 	async init(config) {
@@ -75,7 +84,7 @@ class ioLogik_E2200 extends InstanceBase {
 				this.moxa.outputsDigital = choices.e2262outputsDigital
 				break
 			default:
-				this.updateStatus(InstanceStatus.BadConfig)
+				this.checkStatus(InstanceStatus.BadConfig)
 				this.log('error', `Unrecognised device selection: ${this.config.device}`) // This should never occur
 				return undefined
 		}
@@ -99,7 +108,7 @@ class ioLogik_E2200 extends InstanceBase {
 				pulseStart: false,
 			}
 		}
-		this.updateStatus(InstanceStatus.Connecting)
+		this.checkStatus(InstanceStatus.Connecting)
 		if (this.setupAxios(this.config.host)) {
 			this.queryOnConnect()
 		}
@@ -121,7 +130,7 @@ class ioLogik_E2200 extends InstanceBase {
 			return true
 		} else {
 			this.log('warn', `Invalid config`)
-			this.updateStatus(InstanceStatus.BadConfig)
+			this.checkStatus(InstanceStatus.BadConfig)
 			return undefined
 		}
 	}

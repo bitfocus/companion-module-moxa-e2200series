@@ -11,7 +11,7 @@ export async function UpdateVariableDefinitions(self) {
 		{ variableId: `model`, name: `Model Name` },
 		{ variableId: `serial`, name: `Serial Number` },
 		{ variableId: `macAddr`, name: `MAC Address` },
-		{ variableId: `IP`, name: `IP Address` }
+		{ variableId: `IP`, name: `IP Address` },
 	)
 	if (self.moxa.di.length > 0) {
 		for (let i = 0; i < self.moxa.inputsDigital.length; i++) {

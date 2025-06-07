@@ -33,7 +33,7 @@ export function logError(error) {
 			this.checkStatus(InstanceStatus.ConnectionFailure, `${JSON.stringify(error.code)}`)
 		}
 	} else {
-		this.log('error', `No error code`)
+		this.log('error', typeof error == 'object' ? JSON.stringify(error) : error.toString())
 		this.checkStatus(InstanceStatus.UnknownError)
 	}
 }

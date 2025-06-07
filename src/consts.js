@@ -275,14 +275,14 @@ export const actionOptions = {
 		type: 'textinput',
 		label: 'Low Width (ms)',
 		default: '100',
-		useVariables: true,
+		useVariables: { local: true },
 	},
 	doHighWidth: {
 		id: 'highWidth',
 		type: 'textinput',
 		label: 'High Width (ms)',
 		default: '100',
-		useVariables: true,
+		useVariables: { local: true },
 	},
 	di: {
 		id: 'di',

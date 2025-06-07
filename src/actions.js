@@ -76,13 +76,13 @@ export async function UpdateActions(self) {
 	actionDefs['set_DO_lowWidth'] = {
 		name: 'Set DO Pulse Low Width',
 		options: [doOption, actionOptions.doLowWidth],
-		callback: async ({ options }) => {
-			let width = Math.number(await self.parseVariablesInString(options.lowWidth))
+		callback: async ({ options }, context) => {
+			let width = parseFloat(await context.parseVariablesInString(options.lowWidth))
 			if (isNaN(width) || width < 0.5 || width > 32767) {
 				self.log('warn', `set_DO_lowWidth has been passed an out of range param ${width}`)
 				return undefined
 			}
-			width = parseInt(width * 2)
+			width = Math.floor(width * 2)
 			await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.do.lowWidth, options.do, width))
 		},
 		subscribe: async ({ options }) => {
@@ -92,13 +92,13 @@ export async function UpdateActions(self) {
 	actionDefs['set_DO_highWidth'] = {
 		name: 'Set DO Pulse High Width',
 		options: [doOption, actionOptions.doHighWidth],
-		callback: async ({ options }) => {
-			let width = Math.number(await self.parseVariablesInString(options.highWidth))
+		callback: async ({ options }, context) => {
+			let width = parseFloat(await context.parseVariablesInString(options.highWidth))
 			if (isNaN(width) || width < 0.5 || width > 32767) {
 				self.log('warn', `set_DO_highWidth has been passed an out of range param ${width}`)
 				return undefined
 			}
-			width = parseInt(width * 2)
+			width = Math.floor(width * 2)
 			await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.do.highWidth, options.do, width))
 		},
 		subscribe: async ({ options }) => {
@@ -182,13 +182,13 @@ export async function UpdateActions(self) {
 		actionDefs['set_DI_filter'] = {
 			name: 'Set DI Filter',
 			options: [diOption, actionOptions.diFilter],
-			callback: async ({ options }) => {
-				let filter = Math.number(await self.parseVariablesInString(options.filter))
+			callback: async ({ options }, context) => {
+				let filter = parseFloat(await context.parseVariablesInString(options.filter))
 				if (isNaN(filter) || filter < 0.5 || filter > 8480) {
 					self.log('warn', `set_DI_filter has been passed an out of range param ${filter}`)
 					return undefined
 				}
-				filter = parseInt(filter * 2)
+				filter = Math.floor(filter * 2)
 				await self.sendMsg(self.buildMsg(cmd.set.path, cmd.set.di.filter, options.di, filter))
 			},
 			subscribe: async ({ options }) => {

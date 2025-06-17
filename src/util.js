@@ -27,11 +27,15 @@ export async function sendMsg(msg) {
 		return undefined
 	}
 	await this.queue.add(async () => {
-		try {
-			const response = await this.axios.get(msg)
-			this.logResponse(response)
-		} catch (error) {
-			this.logError(error)
+		if (this.axios) {
+			try {
+				const response = await this.axios.get(msg)
+				this.logResponse(response)
+			} catch (error) {
+				this.logError(error)
+			}
+		} else {
+			this.log('warn', `Axios Client has not been initialised. Message ${msg} not sent`)
 		}
 	})
 }

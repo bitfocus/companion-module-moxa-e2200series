@@ -4,4 +4,5 @@ node_modules/
 package-lock.json
 /pkg
 /pkg.tgz
+moxa-e2200series-*.tgz
 DEBUG-*

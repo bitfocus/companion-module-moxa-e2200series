@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"@companion-module/base": "~1.12.1",
-		"axios": "^1.11.0",
+		"axios": "^1.12.0",
 		"p-queue": "~8.1.0"
 	},
 	"devDependencies": {

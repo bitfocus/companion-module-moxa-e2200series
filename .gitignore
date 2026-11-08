@@ -1,8 +1,13 @@
-.vscode/
-.yarn/
 node_modules/
 package-lock.json
 /pkg
-/pkg.tgz
-moxa-e2200series-*.tgz
+/*.tgz
+/dist
+/coverage
 DEBUG-*
+/.yarn
+/.vscode
+*.log
+*.zip
+.DS_Store
+*.pdf
